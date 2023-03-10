@@ -11,14 +11,14 @@ const keyAndAnswer = [
     },
     {
         id: '1',
-        question: '2.) What is the symbol for floor divide?',
+        question: '2.) How many wheels are on a car?',
         userAnswer: '',
-        answer: '//'
+        answer: '4'
     },
     {
         id: '2',
-        question: '3.) What is the symbol for for grapes?',
-        answer: '%'
+        question: '3.) How many seeds does a mango have?',
+        answer: '1'
     },
     {
         id: '3',
@@ -55,7 +55,7 @@ const keyAndAnswer = [
         question: '10.) How many people fit in a bobsled?',
         answer: '4'
     },
-  
+    
 
 ]
 console.log(keyAndAnswer)
@@ -64,27 +64,38 @@ console.log(keyAndAnswer)
 var questionContainer = document.getElementById('quiz')
 for (const keyAnd of keyAndAnswer) {
     questionContainer.innerHTML += `
-    <div class="questionBox" id="r${keyAnd.id}">
+    <div class="questionBox" id="ask${keyAnd.id}">
         <h4>${keyAnd.question}</h4>
-        <input class="answerOne" id="q${keyAnd.id}" placeholder="Your Answer" type="text" name="answerOne">
+        <input class="answerOne" id="response${keyAnd.id}" placeholder="Your Answer" type="text" name="answerOne">
     </div>
 
  
     `
 }
+let totalsum= 0
 let collection = []
 const submitButton = document.getElementById('questionForm')
 submitButton.addEventListener('submit', function(e) {
     e.preventDefault()
     for (let i = 0; i < keyAndAnswer.length ; i++) {
-        let keyAndOne = document.getElementById(`r${i}`)
-        let answerInput = submitButton.querySelector(`#q${i}`)
+        let keyAndOne = document.getElementById(`ask${i}`)
+        let answerInput = submitButton.querySelector(`#response${i}`)
         collection.push(answerInput.value)
-        if (collection[i] == keyAndAnswer[i][answer]) {
+        if (collection[i].value == keyAndAnswer[i]['answer']) {
         keyAndOne.style.backgroundColor = 'green'
-    }
-}
+        } else {(collection[i] !== keyAndAnswer[i]['answer'])
+        keyAndOne.style.backgroundColor = 'red'
+            } 
+
+        }
+    const getTotalCount = document.getElementById('results')[0]
+    getTotalCount.innerHTML +=`
+        <h2>You got ${keyAndAnswer[i]['answer']}/10 </h2>
+    `
+    
 })
+
+
 console.log(collection)
 
 
