@@ -1,0 +1,36 @@
+
+*{
+    box-sizing: border-box;
+    
+}
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.answerOne {
+    background-color: white;
+    border-radius: 5px;
+    width: 600px;
+    height: 40px;
+}
+
+.btn{
+    background-color: cyan;
+    width: 610px;
+    height: 30px;
+    margin-top: 50px;
+    border-radius:5px ;
+    border: 0px ;
+}
+
+.questionBox {
+    color: black;
+
+}
+
+h1{
+    color: black;
+}
